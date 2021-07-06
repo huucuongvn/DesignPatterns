@@ -26,9 +26,9 @@ struct Creature
 
 class CreatureModifier
 {
-  CreatureModifier* next{ nullptr }; // unique_ptr
+  CreatureModifier* next{ nullptr }; 
 protected:
-  Creature& creature; // pointer or shared_ptr
+  Creature& creature; 
 public:
   explicit CreatureModifier(Creature& creature)
     : creature(creature)
@@ -42,10 +42,7 @@ public:
     else next = cm;
   }
 
-  // two approaches:
-
-  // 1. Always call base handle(). There could be additional logic here.
-  // 2. Only call base handle() when you cannot handle things yourself.
+  
 
   virtual void handle()
   {
@@ -53,9 +50,6 @@ public:
   }
 };
 
-// 1. Double the creature's attack
-// 2. Increase defense by 1 unless power > 2
-// 3. No bonuses can be applied to this creature
 
 class NoBonusesModifier : public CreatureModifier
 {
@@ -67,7 +61,7 @@ public:
 
   void handle() override
   {
-    // nothing
+    
   }
 };
 
@@ -110,17 +104,15 @@ int main_()
   DoubleAttackModifier r1{ goblin };
   DoubleAttackModifier r1_2{ goblin };
   IncreaseDefenseModifier r2{ goblin };
-  //NoBonusesModifier nb{ goblin }; // effectively Command objects
-
-  //root.add(&nb);
+  
   root.add(&r1);
   root.add(&r1_2);
   root.add(&r2);
 
-  root.handle(); // annoying
+  root.handle(); 
 
   cout << goblin << endl;
 
-  //getchar();
+  
   return 0;
 }
