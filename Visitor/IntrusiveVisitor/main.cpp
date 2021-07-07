@@ -44,7 +44,7 @@ struct AdditionExpression : Expression
   }
 };
 
-void main_2_()
+void main()
 {
   auto e = new AdditionExpression{
     new DoubleExpression{1},

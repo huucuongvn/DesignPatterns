@@ -97,7 +97,7 @@ public:
   }
 };
 
-int main_()
+int main()
 {
   Creature goblin{ "Goblin", 1, 1 };
   CreatureModifier root{ goblin };
